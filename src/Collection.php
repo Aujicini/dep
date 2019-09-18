@@ -11,6 +11,8 @@ namespace Oxuwazet\Collection;
  * @see <https://www.php.net/manual/en/class.traversable.php>.
  * @see <https://www.php.net/manual/en/class.serializable.php>.
  * @see <https://www.php.net/manual/en/class.arrayaccess.php>.
+ *
+ * @class Collection.
  */
 class Collection implements CollectionInterface, \Traversable, \Serializable, \ArrayAccess
 {
@@ -177,6 +179,14 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     public function add($element): void
     {
         $this->container[] = $element;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function slice(int $offset, ?int $length = \null): array
+    {
+        return \array_slice($this->container, $offset, $length, \true);
     }
 
     /**
