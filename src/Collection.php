@@ -103,4 +103,14 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     {
         return isset($this->container[$element]) ? $this->container[$element] : null;
     }
+
+    /**
+     * Clear the container.
+     *
+     * @return void Returns nothing.
+     */
+    public function clear(): void
+    {
+        $this->container = [];
+    }
 }
