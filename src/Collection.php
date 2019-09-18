@@ -16,11 +16,7 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     private $container = [];
 
     /**
-     * Construct a new collection instance.
-     *
-     * @param array $insert Insert elements and values into the collection.
-     *
-     * @return void Returns nothing.
+     * {@inheritDoc}
      */
     public function __construct(array $insert)
     {
@@ -30,9 +26,7 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     }
 
     /**
-     * Get the collection container.
-     *
-     * @return array Returns the collection container.
+     * {@inheritDoc}
      */
     public function getContainer(): array
     {
@@ -115,11 +109,7 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     }
 
     /**
-     * Get the value associated with the element after unset the element.
-     *
-     * @param mixed $element The element for the value.
-     *
-     * @return mixed Returns the value associated to the element.
+     * {@inheritDoc}
      */
     public function flash($element)
     {
@@ -129,6 +119,38 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
             return $value;
         }
         return \null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function last()
+    {
+        return \end($this->container);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function key()
+    {
+        return \key($this->container);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function next()
+    {
+        return \next($this->container);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function current()
+    {
+        return \current($this->container);
     }
 
     /**
