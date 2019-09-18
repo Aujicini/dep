@@ -30,6 +30,16 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     }
 
     /**
+     * Get the collection container.
+     *
+     * @return array Returns the collection container.
+     */
+    public function getContainer(): array
+    {
+        return $this->container;
+    }
+
+    /**
      * String representation of object
      *
      * @return string Returns a string representation of object.
@@ -54,8 +64,8 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     /**
      * Insert a value through the array access feature.
      *
-     * @param mixed $offset The element for the value.
-     * @param mixed $value  The value associated to the element.
+     * @param mixed $element The element for the value.
+     * @param mixed $value   The value associated to the element.
      *
      * @return void Returns nothing.
      */
@@ -71,7 +81,7 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     /**
      * Check to see if the element exists.
      *
-     * @param mixed $offset The element for the value.
+     * @param mixed $element The element for the value.
      *
      * @return bool Returns true if the element exsists and false if not.
      */
@@ -83,7 +93,7 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     /**
      * Unset the element (Delete the element and its value).
      *
-     * @param mixed $offset The element for the value.
+     * @param mixed $element The element for the value.
      *
      * @return void Returns nothing.
      */
@@ -95,13 +105,30 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     /**
      * Get the value associated with the element.
      *
-     * @param mixed $offset The element for the value.
+     * @param mixed $element The element for the value.
      *
      * @return mixed Returns the value associated to the element.
      */
     public function offsetGet($element)
     {
-        return isset($this->container[$element]) ? $this->container[$element] : null;
+        return isset($this->container[$element]) ? $this->container[$element] : \null;
+    }
+
+    /**
+     * Get the value associated with the element after unset the element.
+     *
+     * @param mixed $element The element for the value.
+     *
+     * @return mixed Returns the value associated to the element.
+     */
+    public function flash($element)
+    {
+        if ($this->offsetExists($element)) {
+            $value = $this->container[$element];
+            $this->offsetUnset($element);
+            return $value;
+        }
+        return \null;
     }
 
     /**
