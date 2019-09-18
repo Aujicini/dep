@@ -8,6 +8,8 @@ namespace Oxuwazet\Collection;
 /**
  * A collection object for managing variables more efficiently.
  *
+ * @see <https://www.php.net/manual/en/class.traversable.php>.
+ * @see <https://www.php.net/manual/en/class.serializable.php>.
  * @see <https://www.php.net/manual/en/class.arrayaccess.php>.
  */
 class Collection implements CollectionInterface, \Traversable, \Serializable, \ArrayAccess
