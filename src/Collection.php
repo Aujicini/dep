@@ -154,6 +154,30 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function count(): int
+    {
+        return \count($this->container);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function set($element, $value) : void
+    {
+        $this->container[$element] = $value;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function add($element): void
+    {
+        $this->container[] = $element;
+    }
+
+    /**
      * Clear the container.
      *
      * @return void Returns nothing.
