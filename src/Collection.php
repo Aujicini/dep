@@ -3,7 +3,7 @@
  * @author Oxuwazet.
  */
 
-namespace Oxuwazet\Collection;
+namespace Oxuwazet\DependencyInjection;
 
 /**
  * A collection object for managing variables more efficiently.
