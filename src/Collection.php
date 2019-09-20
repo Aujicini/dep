@@ -8,10 +8,6 @@ namespace Oxuwazet\Collection;
 /**
  * A collection object for managing variables more efficiently.
  *
- * @see <https://www.php.net/manual/en/class.traversable.php>.
- * @see <https://www.php.net/manual/en/class.serializable.php>.
- * @see <https://www.php.net/manual/en/class.arrayaccess.php>.
- *
  * @class Collection.
  */
 class Collection implements CollectionInterface, \Traversable, \Serializable, \ArrayAccess
@@ -115,78 +111,45 @@ class Collection implements CollectionInterface, \Traversable, \Serializable, \A
     /**
      * {@inheritDoc}
      */
+    public function has($element): bool
+    {
+        return $this->offsetExists($element);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function remove($element): void
+    {
+        $this->offsetUnset($element);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function get($element)
+    {
+        return $this->offsetGet($element);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function set($element, $value)
+    {
+        $this->offsetSet($element, $value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function flash($element)
     {
+        $value = $this->offsetGet($element);
         if ($this->offsetExists($element)) {
-            $value = $this->container[$element];
             $this->offsetUnset($element);
-            return $value;
         }
-        return \null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function last()
-    {
-        return \end($this->container);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function key()
-    {
-        return \key($this->container);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function next()
-    {
-        return \next($this->container);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function current()
-    {
-        return \current($this->container);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function count(): int
-    {
-        return \count($this->container);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function set($element, $value) : void
-    {
-        $this->container[$element] = $value;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function add($element): void
-    {
-        $this->container[] = $element;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function slice(int $offset, ?int $length = \null): array
-    {
-        return \array_slice($this->container, $offset, $length, \true);
+        return $value;
     }
 
     /**
