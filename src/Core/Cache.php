@@ -1,29 +1,22 @@
 <?php declare(strict_types=1);
-/**
- * Oxuwazet CMS - A powerful CMS built for speed and security.
- *
- * @link <https://github.com/oxuwazet/oxuwazetcms> Source Code.
- * @link <https://github.com/oxuwazet/oxuwazetcms/issues> Issue Tracker.
- *
- * @author Oxuwazet <https://github.com/oxuwazet> Profile Page.
- *
- * @license Boost Software License 1.0 <https://www.boost.org/LICENSE_1_0.txt> The license main page.
- */
 
-namespace Oxuwazet\CMS\Core;
+namespace App\Core;
 
-use Cache\Adapter\Apc\ApcCachePool;
-use Cache\Adapter\Apcu\ApcuCachePool;
-use Cache\Adapter\Filesystem\FilesystemCachePool;
-use Cache\Adapter\Redis\RedisCachePool;
-use Cache\Adapter\Memcache\MemcacheCachePool;
-use Cache\Adapter\Memcached\MemcachedCachePool;
-use Cache\Adapter\Predis\PredisCachePool;
-use Cache\Bridge\SimpleCache;
-use Cache\Encryption\EncryptedCachePool;
+use Cache\{
+    Adapter\Apc\ApcCachePool,
+    Adapter\Apcu\ApcuCachePool,
+    Adapter\Filesystem\FilesystemCachePool,
+    Adapter\Redis\RedisCachePool,
+    Adapter\Memcache\MemcacheCachePool,
+    Adapter\Memcached\MemcachedCachePool,
+    Adapter\Predis\PredisCachePool,
+    Bridge\SimpleCache,
+    Encryption\EncryptedCachePool
+};
 use Defuse\Crypto\Key;
 use League\Flysystem\Filesystem;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Psr\SimpleCache\CacheInterface;
 
 /**
  * The cache handler.
