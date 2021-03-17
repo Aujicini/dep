@@ -1,1 +1,35 @@
+[package]
+name = "quadfish"
+version = "0.0.1"
+description = "A strong 4 player chess engine for smaller 64-bit boards."
+repository = "https://github.com/Aujicini/quadfish"
+readme = "readme.md"
+license = "GPL-3.0+"
+authors = ["Nicholas English <omatamix@gmail.com>"]
+categories = ["games"]
+keywords = ["chess"]
+build = "src/build.rs"
+edition = "2021"
 
+[features]
+default = []
+variant = []
+
+[[bench]]
+name = "benches"
+harness = false
+
+[lib]
+bench = false
+
+[dependencies]
+bitflags = "1.2"
+btoi = "0.4"
+arrayvec = "0.5"
+
+[dev-dependencies]
+iai = "0.1"
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docs_rs"]
