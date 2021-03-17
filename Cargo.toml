@@ -9,7 +9,7 @@ authors = ["Nicholas English <omatamix@gmail.com>"]
 categories = ["games"]
 keywords = ["chess"]
 build = "src/build.rs"
-edition = "2021"
+edition = "2018"
 
 [features]
 default = []
