@@ -69,6 +69,7 @@ enum SquareIndex {
 
 enum GamePhase {
   OPENING,
+  MIDDLEGAME
   ENDGAME
 };
 
